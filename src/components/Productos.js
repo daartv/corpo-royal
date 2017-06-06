@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-
+import { ListaDeProductos } from './index.js'
 class Productos extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Productos</h1>
-        Loading and grid card
-      </div>
+<ListaDeProductos />
     )
   }
 }

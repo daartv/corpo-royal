@@ -4,6 +4,10 @@ import QuienesSomos from './QuienesSomos.js';
 import Productos from './Productos.js';
 import Contactanos from './Contactanos';
 import Presupuesto from './Presupuesto';
+import ListaDeProductos from './ListaDeProductos';
+import ProductoIndividual from './ProductoIndividual';
+
+
 
 
 export {
@@ -12,6 +16,8 @@ export {
   QuienesSomos,
   Productos,
   Contactanos,
-  Presupuesto
+  Presupuesto,
+  ListaDeProductos,
+  ProductoIndividual
 }
 

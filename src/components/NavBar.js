@@ -18,7 +18,8 @@ class NavBar extends Component {
         <Menu
         mode='horizontal'
         onClick={this.handleClick}
-        > 
+        >
+          <img src='http://imgur.com/gallery/v2kh4'/> 
           <MenuItem key='inicio'>
            <Link to='/inicio'><Icon type="home" />Inicio</Link>
           </MenuItem>

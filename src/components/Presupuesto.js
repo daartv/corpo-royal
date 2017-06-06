@@ -6,7 +6,7 @@ class Presupuesto extends Component {
     return (
       <div>
         <h1>Presupuesto</h1>
-        Transfer?
+        Loading, 2 grid cards, one for selection and one for the cart, number input for each of those
       </div>
     );
   }
