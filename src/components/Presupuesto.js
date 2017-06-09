@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { ProductosDisponibles, Carrito } from './index.js'
-import { Button, Icon } from 'antd';
+import { Button, Icon, Tooltip } from 'antd';
 import 'antd/lib/button/style/css';
 import 'antd/lib/icon/style/css';
+import 'antd/lib/tooltip/style/css';
+
 
 
 const productosFalsos = [
@@ -64,7 +66,9 @@ class Presupuesto extends Component {
         montos={{subTotal: this.state.subTotal, IVA: this.state.IVA}} 
         compras={this.state.carrito} onClick={this.clickBorrar.bind(this)}
         cambioCarrito={this.cambioCarrito.bind(this)}/>
-        <Button type="primary" shape="circle" icon="download" size='large' onClick={this.clickPresupuesto.bind(this)} />
+        <Tooltip title='Descarga y mándanos una copia de este presupuesto' placement='right' >
+          <Button type="primary" shape="circle" icon="download" size='large' onClick={this.clickPresupuesto.bind(this)} />
+        </Tooltip>
       </div>
     );
   }
