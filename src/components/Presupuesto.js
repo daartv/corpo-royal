@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { ProductosDisponibles, Carrito } from './index.js'
+import { Button, Icon } from 'antd';
+import 'antd/lib/button/style/css';
+import 'antd/lib/icon/style/css';
+
 
 const productosFalsos = [
   {cantidad: 1, nombre: 'Bolsa roja', descripcion:'Bolsa de plastico de color rojo', precio: 1000, unidades: 1000000, id: 1},
@@ -23,8 +27,11 @@ class Presupuesto extends Component {
     };
   }
 
+  clickPresupuesto() {
+    console.log('se descarga un pdf con el presupuesto y se manda una copia a CorpoPlast, recordar hacer un prompt de datos del usario', this.state)
+  }
+
   cambioCarrito(nuevoCarrito) {
-    console.log('Nuevo Carrito al empezar cambioCarrito', nuevoCarrito);
     let nuevoSubTotal = 0;
     for (let compra of nuevoCarrito) {
       nuevoSubTotal += compra.precio * compra.cantidad;
@@ -34,7 +41,7 @@ class Presupuesto extends Component {
       carrito: nuevoCarrito,
       subTotal: nuevoSubTotal,
       IVA: nuevoIVA
-    }, () => console.log('Estado al finalizar la funcion y setState', this.state));
+    });
   }
 
   clickAgregar(producto) {
@@ -57,6 +64,7 @@ class Presupuesto extends Component {
         montos={{subTotal: this.state.subTotal, IVA: this.state.IVA}} 
         compras={this.state.carrito} onClick={this.clickBorrar.bind(this)}
         cambioCarrito={this.cambioCarrito.bind(this)}/>
+        <Button type="primary" shape="circle" icon="download" size='large' onClick={this.clickPresupuesto.bind(this)} />
       </div>
     );
   }

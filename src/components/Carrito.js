@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Table, Button, InputNumber } from 'antd';
+import { Table, Button, InputNumber, Icon } from 'antd';
 import 'antd/lib/button/style/css';
 import 'antd/lib/table/style/css';
 import 'antd/lib/input-number/style/css';
+
 
 
 class Carrito extends React.Component {
