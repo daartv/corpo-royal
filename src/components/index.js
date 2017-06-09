@@ -6,8 +6,9 @@ import Contactanos from './Contactanos';
 import Presupuesto from './Presupuesto';
 import ListaDeProductos from './ListaDeProductos';
 import ProductoIndividual from './ProductoIndividual';
-
-
+import ProductosDisponibles from './ProductosDisponibles';
+import DisponibleIndividual from './DisponibleIndividual';
+import Carrito from './Carrito';
 
 
 export {
@@ -18,6 +19,9 @@ export {
   Contactanos,
   Presupuesto,
   ListaDeProductos,
-  ProductoIndividual
+  ProductoIndividual,
+  ProductosDisponibles,
+  DisponibleIndividual,
+  Carrito
 }
 
