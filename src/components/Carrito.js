@@ -1,10 +1,11 @@
 import React from 'react';
-import { Table, Button, InputNumber } from 'antd';
+import { Table, Button, InputNumber, Layout } from 'antd';
 import 'antd/lib/button/style/css';
 import 'antd/lib/table/style/css';
 import 'antd/lib/input-number/style/css';
+import 'antd/lib/layout/style/css';
 
-
+const { Footer, Sider, Content, Header } = Layout;
 
 class Carrito extends React.Component {
 
@@ -52,12 +53,14 @@ class Carrito extends React.Component {
       )
     }];
     return (
-      <div>
+      <Layout>
+      <Content>
         <Table dataSource={this.props.compras} columns={columns} />
+      </Content>
         <p>Sub-Total: {this.props.montos.subTotal}</p>
         <p>IVA: {this.props.montos.IVA}</p>
         <p>Total a pagar: {this.props.montos.subTotal + this.props.montos.IVA}</p> 
-      </div>
+      </Layout>
     )
   }
 }

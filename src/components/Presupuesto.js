@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { ProductosDisponibles, Carrito, DatosModal } from './index.js'
-import { notification } from 'antd';
+import { notification, Layout } from 'antd';
 import 'antd/lib/button/style/css';
 import 'antd/lib/notification/style/css';
+import 'antd/lib/layout/style/css';
+
+
+const { Footer, Sider, Content } = Layout;
 
 const productosFalsos = [
   {cantidad: 1, nombre: 'Bolsa roja', descripcion:'Bolsa de plastico de color rojo', precio: 1000, unidades: 1000000, id: 1},
@@ -69,15 +73,20 @@ class Presupuesto extends Component {
 
   render() {
     return (
-      <div>
-        <ProductosDisponibles productos={this.state.disponibles} onClick={this.clickAgregar.bind(this)} />
-        <hr></hr>
-        <Carrito 
-        montos={{subTotal: this.state.subTotal, IVA: this.state.IVA}} 
-        compras={this.state.carrito} onClick={this.clickBorrar.bind(this)}
-        cambioCarrito={this.cambioCarrito.bind(this)}/>
+      <Layout style={{ height: '100vh', fontSize: '125%' }}>
+        <Sider style={{ overflow: 'auto' }}>
+          <ProductosDisponibles productos={this.state.disponibles} onClick={this.clickAgregar.bind(this)} />
+        </Sider>
+        <Content>
+          <Carrito 
+            montos={{subTotal: this.state.subTotal, IVA: this.state.IVA}} 
+            compras={this.state.carrito} onClick={this.clickBorrar.bind(this)}
+            cambioCarrito={this.cambioCarrito.bind(this)}/>
+        </Content>
+        <Footer>
         <DatosModal presupuesto={this.state}/>
-      </div>
+        </Footer>
+      </Layout>
     );
   }
 }

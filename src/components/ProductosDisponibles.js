@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row } from 'antd';
 import { DisponibleIndividual } from './index.js'
-import 'antd/lib/card/style/css';
+import 'antd/lib/grid/style/css';
 
 const ProductosDisponibles = (props) => (
   <Row gutter={8}>

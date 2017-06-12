@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Modal, Form, Input, Button, Tooltip } from 'antd';
+import { Modal, Form, Input, Button, Tooltip, notification } from 'antd';
 import 'antd/lib/modal/style/css';
 import 'antd/lib/button/style/css';
 import 'antd/lib/form/style/css';
 import 'antd/lib/input/style/css';
 import 'antd/lib/tooltip/style/css';
+import 'antd/lib/notification/style/css';
+
 
 const FormItem = Form.Item;
 
@@ -34,7 +36,14 @@ class DatosModal extends Component {
   }
 
   cambiarEstadoModal() {
-    this.setState({visible: !this.state.visible});
+    if (this.props.presupuesto.carrito.length === 0) {
+      notification.open({
+        message: 'Su carrito esta vacio',
+        description: 'Agregue algo al carrito e intente de nuevo'
+      })
+    } else {
+      this.setState({visible: !this.state.visible});
+    }
   }
 
   manejoInput(estado, str) {

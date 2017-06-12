@@ -10,14 +10,14 @@ class DisponibleIndividual extends React.Component {
 
 	render () {
 		return (
-			<Col span={6}>
-				<Card title={this.props.producto.nombre} style={{ width: 300 }}>
+			<div>
+				<Card title={this.props.producto.nombre} style={{ width: 200 }}>
 					<p>Precio: {this.props.producto.precio}</p>
 					<p>Descripcion: {this.props.producto.descripcion}</p>
 					<p>Cantidad: {this.props.producto.unidades}</p>
 					<Button type='primary' onClick={this.agregar.bind(this)}> Agregar </Button>
 				</Card>
-			</Col>
+			</div>
 		)
 	}
 }

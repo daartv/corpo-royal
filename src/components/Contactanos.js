@@ -36,7 +36,7 @@ class Contactanos extends Component {
   render() {
 
     return (
-    	<Form>
+    	<Form style={{fontSize: '125%'}}>
     		<Select defaultValue="¿En qué lo podemos ayudar?" style={{ width: 200 }} onChange={this.manejoSelect.bind(this)}>
     		  <Option value="presupuesto">Presupuesto</Option>
     		  <Option value="personalizado">Pedido Personalizado</Option>
