@@ -9,6 +9,8 @@ import ProductoIndividual from './ProductoIndividual';
 import ProductosDisponibles from './ProductosDisponibles';
 import DisponibleIndividual from './DisponibleIndividual';
 import Carrito from './Carrito';
+import DatosModal from './DatosModal';
+
 
 
 export {
@@ -22,6 +24,7 @@ export {
   ProductoIndividual,
   ProductosDisponibles,
   DisponibleIndividual,
-  Carrito
+  Carrito,
+  DatosModal
 }
 

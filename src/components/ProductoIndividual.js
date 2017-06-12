@@ -4,9 +4,6 @@ import { Card } from 'antd';
 import 'antd/lib/grid/style/css';
 
 class ProductoIndividual extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render () {
 		return (

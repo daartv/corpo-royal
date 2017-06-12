@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { ProductosDisponibles, Carrito } from './index.js'
-import { Button, Icon, Tooltip } from 'antd';
+import { ProductosDisponibles, Carrito, DatosModal } from './index.js'
+import { notification } from 'antd';
 import 'antd/lib/button/style/css';
-import 'antd/lib/icon/style/css';
-import 'antd/lib/tooltip/style/css';
-
-
+import 'antd/lib/notification/style/css';
 
 const productosFalsos = [
   {cantidad: 1, nombre: 'Bolsa roja', descripcion:'Bolsa de plastico de color rojo', precio: 1000, unidades: 1000000, id: 1},
@@ -29,10 +26,6 @@ class Presupuesto extends Component {
     };
   }
 
-  clickPresupuesto() {
-    console.log('se descarga un pdf con el presupuesto y se manda una copia a CorpoPlast, recordar hacer un prompt de datos del usario', this.state)
-  }
-
   cambioCarrito(nuevoCarrito) {
     let nuevoSubTotal = 0;
     for (let compra of nuevoCarrito) {
@@ -46,10 +39,27 @@ class Presupuesto extends Component {
     });
   }
 
+  notificacionCantidad() {
+    notification.open({
+        message: 'Ya agregó este producto al carrito',
+        description: 'Si desea cambiar la cantidad, hágalo directamente en el carrito, bajo la columna "Cantidad"',
+    });
+  }
+
   clickAgregar(producto) {
+    let esDuplicado = false;
     let nuevoCarrito = this.state.carrito;
-    nuevoCarrito.push(producto);
-    this.cambioCarrito(nuevoCarrito);
+    for (let compra of nuevoCarrito) {
+      if (compra.id === producto.id) {
+        esDuplicado = true;
+      }
+    }
+    if (esDuplicado) {
+      this.notificacionCantidad()
+    } else {
+      nuevoCarrito.push(producto);
+      this.cambioCarrito(nuevoCarrito);
+    }
   }
 
   clickBorrar(nombre, e) {
@@ -66,9 +76,7 @@ class Presupuesto extends Component {
         montos={{subTotal: this.state.subTotal, IVA: this.state.IVA}} 
         compras={this.state.carrito} onClick={this.clickBorrar.bind(this)}
         cambioCarrito={this.cambioCarrito.bind(this)}/>
-        <Tooltip title='Descarga y mándanos una copia de este presupuesto' placement='right' >
-          <Button type="primary" shape="circle" icon="download" size='large' onClick={this.clickPresupuesto.bind(this)} />
-        </Tooltip>
+        <DatosModal presupuesto={this.state}/>
       </div>
     );
   }

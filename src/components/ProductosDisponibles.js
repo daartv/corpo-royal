@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Row } from 'antd';
 import { DisponibleIndividual } from './index.js'
 import 'antd/lib/card/style/css';

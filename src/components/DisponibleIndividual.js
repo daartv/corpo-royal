@@ -1,11 +1,8 @@
 import React from 'react';
-import { Col, Row, Card, Button } from 'antd';
+import { Col, Card, Button } from 'antd';
 import 'antd/lib/grid/style/css';
 
 class DisponibleIndividual extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
 	agregar() {
 		this.props.onClick(this.props.producto);

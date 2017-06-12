@@ -1,7 +1,6 @@
 import { Menu, Icon } from 'antd';
 import React, { Component } from 'react';
 import 'antd/lib/menu/style/css';
-import { Inicio, MisionVision, Productos, QuienesSomos, Contactanos } from '../components/index.js';
 import { Link } from 'react-router-dom';
 
 const MenuItem = Menu.Item
