@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const api = express.Router();
-const { obtenerProductos } = require('../db/models.js')
+const { obtenerProductos } = require('../db/Productos.js')
 
 app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,7 +14,7 @@ api.route('/productos')
 /*api.route('/presupuesto')
   .get(hacerPDFPresupuesto, mandarPDFPresupuesto)*/
 
-/*  api.post('/contactanos')
+/*  api.route('/contactanos')
     .post(mandarCorreoDeContacto)*/
 
 app.use('/api', api);
