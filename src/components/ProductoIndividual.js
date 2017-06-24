@@ -10,9 +10,9 @@ class ProductoIndividual extends React.Component {
 		return (
 			<Col span={6} >
 				<Card title={this.props.producto.nombre} style={{ width: 300, fontSize: '125%' }}>
-				  <p>Descripcion: {this.props.producto.descripcion} </p>
-				  <p>Precio: {this.props.producto.precio}</p>
-				  <p>Unidades: {this.props.producto.unidades}</p>
+				  <p><b>Descripcion:</b> {this.props.producto.descripcion} </p>
+				  <p><b>Precio:</b> {this.props.producto.precio} BsF</p>
+				  <p><b>Unidades:</b> {this.props.producto.unidades}</p>
 				</Card>
 			</Col>
 		)

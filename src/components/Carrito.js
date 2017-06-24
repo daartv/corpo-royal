@@ -5,7 +5,7 @@ import 'antd/lib/table/style/css';
 import 'antd/lib/input-number/style/css';
 import 'antd/lib/layout/style/css';
 
-const { Footer, Sider, Content, Header } = Layout;
+const { Content } = Layout;
 
 class Carrito extends React.Component {
 

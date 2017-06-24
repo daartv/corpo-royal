@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Form, Input, Button, Tooltip, notification } from 'antd';
+import axios from 'axios';
+
 import 'antd/lib/modal/style/css';
 import 'antd/lib/button/style/css';
 import 'antd/lib/form/style/css';
@@ -31,7 +33,20 @@ class DatosModal extends Component {
       IVA: this.props.presupuesto.IVA,
       total: this.props.presupuesto.subTotal + this.props.presupuesto.IVA
     }
-  console.log(presupuesto);
+  axios({
+    method: 'post',
+    url: 'http://localhost:1337/api/presupuesto',
+    data: presupuesto,
+    header: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      alert(error);
+    })
   this.cambiarEstadoModal();
   }
 

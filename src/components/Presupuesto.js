@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ProductosDisponibles, Carrito, DatosModal } from './index.js'
 import { notification, Layout } from 'antd';
+import axios from 'axios';
+
 import 'antd/lib/button/style/css';
 import 'antd/lib/notification/style/css';
 import 'antd/lib/layout/style/css';
@@ -8,26 +10,27 @@ import 'antd/lib/layout/style/css';
 
 const { Footer, Sider, Content } = Layout;
 
-const productosFalsos = [
-  {cantidad: 1, nombre: 'Bolsa roja', descripcion:'Bolsa de plastico de color rojo', precio: 1000, unidades: 1000000, id: 1},
-  {cantidad: 1, nombre: 'Bolsa negra', descripcion:'Bolsa de plastico de color negro', precio: 1001, unidades: 1000000, id: 2},
-  {cantidad: 1, nombre: 'Bolsa azul', descripcion:'Bolsa de plastico de color azul', precio: 1000, unidades: 1000000, id: 3},
-  {cantidad: 1, nombre: 'Bolsa verde', descripcion:'Bolsa de plastico de color verde', precio: 1000, unidades: 1000000, id: 4},
-  {cantidad: 1, nombre: 'Bolsa gris', descripcion:'Bolsa de plastico de color gris', precio: 1000, unidades: 1000000, id: 5},
-  {cantidad: 1, nombre: 'Bolsa amarilla', descripcion:'Bolsa de plastico de color amarillo', precio: 1000, unidades: 1000000, id: 6},
-  {cantidad: 1, nombre: 'Bolsa transparente', descripcion:'Bolsa de plastico de color gris', precio: 1000, unidades: 1000000, id: 7},
-  {cantidad: 1, nombre: 'Bolsa personalizada', descripcion:'Bolsa de plastico de color gris', precio: 1000, unidades: 1000000, id: 8}
-  ]
-
 class Presupuesto extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      disponibles: productosFalsos,
+      disponibles: [],
       carrito: [],
       subTotal: 0,
       IVA: 0
     };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:1337/api/productos')
+      .then(({data}) => {
+        let nProductos = data
+        this.setState({disponibles: nProductos})
+      })
+      .catch((error) => {
+        console.log('hubo un error recuperando los productos', error);
+        alert('No se recuperaron los productos');
+      })
   }
 
   cambioCarrito(nuevoCarrito) {
@@ -74,7 +77,7 @@ class Presupuesto extends Component {
   render() {
     return (
       <Layout style={{ height: '100vh', fontSize: '125%' }}>
-        <Sider style={{ overflow: 'auto' }}>
+        <Sider style={{ overflow: 'auto' }} width={290}>
           <ProductosDisponibles productos={this.state.disponibles} onClick={this.clickAgregar.bind(this)} />
         </Sider>
         <Content>

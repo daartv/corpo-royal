@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar.js';
-import { Layout, Affix } from 'antd';
+import { Layout } from 'antd';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Inicio, MisionVision, Productos, QuienesSomos, Contactanos, Presupuesto } from './components/index.js';
 import 'antd/lib/layout/style/css';
