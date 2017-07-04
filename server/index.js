@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const api = express.Router();
 const { obtenerProductos } = require('../db/Productos.js');
-const { hacerPDFPresupuesto } = require('./PDFkit/hacerPDFPresupuesto.js') 
+const { hacerPDFPresupuesto } = require('./PDFkit/hacerPDFPresupuesto.js');
+const { descargarPDFPresupuesto } = require('./PDFkit/descargarPDFPresupuesto.js')
 
 app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,6 +15,9 @@ api.route('/productos')
 
 api.route('/presupuesto')
   .post(hacerPDFPresupuesto)
+
+api.route('/descarga')
+  .get(descargarPDFPresupuesto)
 
 /*  api.route('/contactanos')
     .post(mandarCorreoDeContacto)*/

@@ -36,13 +36,11 @@ class DatosModal extends Component {
   axios({
     method: 'post',
     url: 'http://localhost:1337/api/presupuesto',
-    data: presupuesto,
-    header: {
-      'Access-Control-Allow-Origin': '*'
-    }
+    data: presupuesto
   })
     .then((response) => {
-      console.log(response);
+      console.log('Hay una respuesta', response);
+      window.open('http://localhost:1337/api/descarga');
     })
     .catch((error) => {
       alert(error);
